@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianX AI Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background for tech theme */
+            color: #e2e8f0; /* Light text color */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for scrollable content */
+            min-height: 100vh;
+            padding: 20px;
+            overflow-y: auto; /* Allow scrolling for content */
+        }
+        .dashboard-container {
+            background-color: #2d3748; /* Slightly lighter dark background for main content */
+            border-radius: 1rem; /* Rounded corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1400px; /* Max width for desktop view */
+            min-height: 800px;
+            overflow: hidden;
+        }
+        .header {
+            background-color: #2a6f97; /* Dark blue for header */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .sidebar {
+            background-color: #2d3748; /* Same as main container background */
+            width: 250px;
+            padding: 1.5rem 1rem;
+            border-right: 1px solid #4a5568; /* Subtle separator */
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .sidebar-item:hover {
+            background-color: #4a5568;
+        }
+        .sidebar-item.active {
+            background-color: #4a90d9; /* Medium blue for active item */
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .main-content-area {
+            flex-grow: 1;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .map-section {
+            flex: 3;
+            background-color: #1a202c; /* Darker background for map */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            position: relative;
+            min-height: 500px; /* Ensure map has height */
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/800x500/333333/ffffff?text=Event+Map+with+Heatmap'); /* Placeholder map image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #e2e8f0;
+        }
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            min-width: 300px; /* Minimum width for readability */
+        }
+        .card {
+            background-color: #2a3340; /* Slightly lighter than main background */
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #87ceeb; /* Light blue for titles */
+        }
+        .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #4a5568;
+            font-size: 0.9rem;
+        }
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+        .severity-badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .severity-high { background-color: #e53e3e; } /* Red */
+        .severity-medium { background-color: #dd6b20; } /* Orange */
+        .severity-low { background-color: #38a169; } /* Green */
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #4a5568;
+            font-size: 0.9rem;
+        }
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+        .metric-value {
+            font-weight: 600;
+            color: #87ceeb;
+        }
+
+        /* Icons (simple SVG or text for mockup) */
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                flex-direction: column; /* Stack sidebar and main content */
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #4a5568;
+                padding-bottom: 1rem;
+            }
+            .main-content-area {
+                flex-direction: column; /* Stack map and right panel */
+            }
+            .right-panel {
+                min-width: unset; /* Remove min-width constraint */
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="flex items-center gap-4">
+                <span class="text-2xl font-bold text-white">GuardianX AI</span>
+                <span class="text-lg ml-8">Event: Mega Music Fest 2025</span>
+                <span class="text-lg">Location: Central Park Arena</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    Live Status: All Clear
+                </div>
+                <div class="relative">
+                    <svg class="icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
+                </div>
+                <svg class="icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-.33 1.82z"></path></svg>
+                <svg class="icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+        </div>
+
+        <div class="flex flex-1">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-item active">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                    Dashboard
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+                    Live Map
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18H2M22 12H2M22 6H2"></path></svg>
+                    Alerts Log
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Personnel Status
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Reports
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-.33 1.82z"></path></svg>
+                    Settings
+                </div>
+
+                <div class="mt-8 text-sm text-gray-400 font-semibold">QUICK STATS</div>
+                <div class="text-xs text-gray-300">
+                    <div class="py-1">Current Crowd Density: <span class="font-bold text-green-400">Low</span></div>
+                    <div class="py-1">Active Alerts: <span class="font-bold text-yellow-400">3</span></div>
+                    <div class="py-1">Active Incidents: <span class="font-bold text-red-400">1</span></div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="main-content-area">
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-placeholder">
+                        <span class="text-center"></span>
+                        <!-- Example Incident Markers (absolute positioning for mockup) -->
+                        <div class="absolute top-1/4 left-1/3 bg-red-500 rounded-full w-8 h-8 flex items-center justify-center text-white text-sm font-bold shadow-lg">!</div>
+                        <div class="absolute top-2/3 right-1/4 bg-orange-500 rounded-full w-8 h-8 flex items-center justify-center text-white text-sm font-bold shadow-lg">👥</div>
+                        <div class="absolute top-1/2 left-1/2 bg-yellow-500 rounded-full w-8 h-8 flex items-center justify-center text-white text-sm font-bold shadow-lg">?</div>
+                    </div>
+                </div>
+
+                <!-- Right Panel -->
+                <div class="right-panel">
+                    <!-- Live Alerts Feed -->
+                    <div class="card flex-1">
+                        <h3 class="card-title">Live Alerts Feed</h3>
+                        <div class="overflow-y-auto max-h-64"> <!-- Scrollable alerts -->
+                            <div class="alert-item">
+                                <span class="text-red-500 text-lg">⚠️</span>
+                                <div>
+                                    <div class="font-medium">Unattended Bag - Gate 3</div>
+                                    <div class="text-gray-400">Severity: <span class="severity-badge severity-high">High</span> | 18:05:32</div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <span class="text-orange-500 text-lg">👥</span>
+                                <div>
+                                    <div class="font-medium">Crowd Surge - Main Stage</div>
+                                    <div class="text-gray-400">Severity: <span class="severity-badge severity-medium">Medium</span> | 18:03:10</div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <span class="text-yellow-500 text-lg">🚑</span>
+                                <div>
+                                    <div class="font-medium">Medical Emergency - Section B4</div>
+                                    <div class="text-gray-400">Severity: <span class="severity-badge severity-medium">Medium</span> | 17:58:45</div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <span class="text-green-500 text-lg">📦</span>
+                                <div>
+                                    <div class="font-medium">Object Detected - Entrance 1</div>
+                                    <div class="text-gray-400">Severity: <span class="severity-badge severity-low">Low</span> | 17:50:15</div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <span class="text-red-500 text-lg">⚠️</span>
+                                <div>
+                                    <div class="font-medium">Unattended Bag - VIP Lounge</div>
+                                    <div class="text-gray-400">Severity: <span class="severity-badge severity-high">High</span> | 17:45:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Metrics/Summary -->
+                    <div class="card flex-1">
+                        <h3 class="card-title">Key Metrics & System Status</h3>
+                        <div class="text-sm">
+                            <div class="metric-item">
+                                <span>Current Estimated Crowd:</span>
+                                <span class="metric-value">25,432</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>Occupancy %:</span>
+                                <span class="metric-value">85%</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>Flow Rate:</span>
+                                <span class="metric-value">120 persons/min</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>Total Alerts (Last Hour):</span>
+                                <span class="metric-value">5</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>Resolved Incidents:</span>
+                                <span class="metric-value">2</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>Pending Incidents:</span>
+                                <span class="metric-value">3</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>CCTV Feeds:</span>
+                                <span class="metric-value">28/30 Active</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>IoT Sensors:</span>
+                                <span class="metric-value">15/15 Online</span>
+                            </div>
+                            <div class="metric-item">
+                                <span>AI Core Status:</span>
+                                <span class="metric-value text-green-400">Operational</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
