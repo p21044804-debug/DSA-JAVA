@@ -1,0 +1,392 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ass4",
+            "request": "launch",
+            "mainClass": "ass4",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "ass5",
+            "request": "launch",
+            "mainClass": "ass5",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "ass3",
+            "request": "launch",
+            "mainClass": "ass3",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "ass2",
+            "request": "launch",
+            "mainClass": "ass2",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "ass1",
+            "request": "launch",
+            "mainClass": "ass1",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra52",
+            "request": "launch",
+            "mainClass": "pra52",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra51",
+            "request": "launch",
+            "mainClass": "pra51",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra50",
+            "request": "launch",
+            "mainClass": "pra50",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra46",
+            "request": "launch",
+            "mainClass": "pra46",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra45",
+            "request": "launch",
+            "mainClass": "pra45",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra44",
+            "request": "launch",
+            "mainClass": "pra44",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra49",
+            "request": "launch",
+            "mainClass": "pra49",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra48",
+            "request": "launch",
+            "mainClass": "pra48",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra43",
+            "request": "launch",
+            "mainClass": "pra43",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra42",
+            "request": "launch",
+            "mainClass": "pra42",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra41",
+            "request": "launch",
+            "mainClass": "pra41",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra40",
+            "request": "launch",
+            "mainClass": "pra40",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra39",
+            "request": "launch",
+            "mainClass": "pra39",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra38",
+            "request": "launch",
+            "mainClass": "pra38",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra37",
+            "request": "launch",
+            "mainClass": "pra37",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra36",
+            "request": "launch",
+            "mainClass": "pra36",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra35",
+            "request": "launch",
+            "mainClass": "pra35",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra34",
+            "request": "launch",
+            "mainClass": "pra34",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra33",
+            "request": "launch",
+            "mainClass": "pra33",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra32",
+            "request": "launch",
+            "mainClass": "pra32",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra31",
+            "request": "launch",
+            "mainClass": "pra31",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra29",
+            "request": "launch",
+            "mainClass": "pra29",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra30",
+            "request": "launch",
+            "mainClass": "pra30",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra28",
+            "request": "launch",
+            "mainClass": "pra28",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra27",
+            "request": "launch",
+            "mainClass": "pra27",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra26",
+            "request": "launch",
+            "mainClass": "pra26",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra25",
+            "request": "launch",
+            "mainClass": "pra25",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra23",
+            "request": "launch",
+            "mainClass": "pra23",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra21",
+            "request": "launch",
+            "mainClass": "pra21",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra22",
+            "request": "launch",
+            "mainClass": "pra22",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra19",
+            "request": "launch",
+            "mainClass": "pra19",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra15",
+            "request": "launch",
+            "mainClass": "pra15",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra17",
+            "request": "launch",
+            "mainClass": "pra17",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra13",
+            "request": "launch",
+            "mainClass": "pra13",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra12",
+            "request": "launch",
+            "mainClass": "pra12",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra18",
+            "request": "launch",
+            "mainClass": "pra18",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra16",
+            "request": "launch",
+            "mainClass": "pra16",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra14",
+            "request": "launch",
+            "mainClass": "pra14",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra11",
+            "request": "launch",
+            "mainClass": "pra11",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "pra1",
+            "request": "launch",
+            "mainClass": "pra1",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra10",
+            "request": "launch",
+            "mainClass": "pra10",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra2",
+            "request": "launch",
+            "mainClass": "pra2",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra3",
+            "request": "launch",
+            "mainClass": "pra3",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra4",
+            "request": "launch",
+            "mainClass": "pra4",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra5",
+            "request": "launch",
+            "mainClass": "pra5",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra6",
+            "request": "launch",
+            "mainClass": "pra6",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra7",
+            "request": "launch",
+            "mainClass": "pra7",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra8",
+            "request": "launch",
+            "mainClass": "pra8",
+            "projectName": "parttens_4f62729f"
+        },
+        {
+            "type": "java",
+            "name": "pra9",
+            "request": "launch",
+            "mainClass": "pra9",
+            "projectName": "parttens_4f62729f"
+        }
+    ]
+}

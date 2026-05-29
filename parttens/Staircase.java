@@ -1,4 +1,8 @@
 public class Staircase{
+   
+    static int add(int a,int b){
+        return a+b;
+    }
     public static void main(String [] args){
         int n=5;
         for(int i=1;i<=n;i++){
